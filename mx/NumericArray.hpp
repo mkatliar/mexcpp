@@ -39,28 +39,28 @@ namespace mx
 
 
     template <typename T>
-    NumericArray<T>::NumericArray(mwSize m, mwSize n)
+    inline NumericArray<T>::NumericArray(mwSize m, mwSize n)
     :   Array {mxCreateNumericMatrix(m, n, classId<T>(), mxREAL)}
     {
     }
 
 
     template <typename T>
-    NumericArray<std::complex<T>>::NumericArray(mwSize m, mwSize n)
+    inline NumericArray<std::complex<T>>::NumericArray(mwSize m, mwSize n)
     :   Array {mxCreateNumericMatrix(m, n, classId<T>(), mxCOMPLEX)}
     {
     }
 
 
     template <>
-    mxDouble * NumericArray<mxDouble>::data()
+    inline mxDouble * NumericArray<mxDouble>::data()
     {
         return mxGetDoubles(get());
     }
 
 
     template <>
-    mxDouble const * NumericArray<mxDouble>::data() const
+    inline mxDouble const * NumericArray<mxDouble>::data() const
     {
         return mxGetDoubles(get());
     }
