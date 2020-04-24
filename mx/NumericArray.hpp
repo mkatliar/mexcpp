@@ -13,6 +13,7 @@ namespace mx
     :   public Array
     {
     public:
+        NumericArray(Array&& rhs);
         NumericArray(mwSize m, mwSize n);
         
         T * data();
@@ -28,6 +29,7 @@ namespace mx
     :   public Array
     {
     public:
+        NumericArray(Array&& rhs);
         NumericArray(mwSize m, mwSize n);
         
         std::complex<T> * data();
@@ -36,6 +38,13 @@ namespace mx
 
     private:
     };
+
+
+    template <typename T>
+    inline NumericArray<T>::NumericArray(Array&& rhs)
+    :   Array {std::move(rhs)}
+    {
+    }
 
 
     template <typename T>

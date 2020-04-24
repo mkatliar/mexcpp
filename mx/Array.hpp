@@ -15,7 +15,35 @@ namespace mx
         friend class ::mat::MatFile;
 
 
+    public:
+        auto getM() const noexcept
+        {
+            return mxGetM(get());
+        }
+
+
+        auto getN() const noexcept
+        {
+            return mxGetN(get());
+        }
+
+
+        auto getNumberOfDimensions() const noexcept
+        {
+            return mxGetNumberOfDimensions(get());
+        }
+
+
+        auto getNumberOfElements() const noexcept
+        {
+            return mxGetNumberOfElements(get());
+        }
+
+
     protected:
+        Array(Array&&) = default;
+
+
         explicit Array(mxArray * arr) noexcept
         :   array_{arr}
         {

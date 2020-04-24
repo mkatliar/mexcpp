@@ -30,6 +30,17 @@ namespace mat
         }
 
 
+        mx::Array getVariable(char const * name) const
+        {
+            mxArray * const var = matGetVariable(file_.get(), name);
+
+            if (var == nullptr)
+                BOOST_THROW_EXCEPTION(Exception {} << boost::errinfo_api_function("matGetVariable"));
+
+            return mx::Array {var};
+        }
+
+
     private:
         struct MatClose
         {
