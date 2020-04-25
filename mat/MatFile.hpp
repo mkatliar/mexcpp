@@ -18,6 +18,10 @@ namespace mat
         MatFile(char const * filename, char const * mode)
         :   file_{matOpen(filename, mode)}
         {
+            if (!file_)
+                BOOST_THROW_EXCEPTION(Exception {} 
+                    << boost::errinfo_api_function("matOpen")
+                    << boost::errinfo_file_name(filename));
         }
 
 
